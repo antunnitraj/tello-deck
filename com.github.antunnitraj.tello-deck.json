@@ -1,0 +1,48 @@
+{
+  "app-id": "com.github.antunnitraj.tello-deck",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "46",
+  "sdk": "org.gnome.Sdk",
+  "command": "tello",
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=all"
+  ],
+  "add-extensions": {
+    "org.freedesktop.Platform.ffmpeg-full": {
+      "directory": "lib/ffmpeg",
+      "version": "23.08",
+      "add-ld-path": ".",
+      "no-autodownload": true,
+      "autodelete": false
+    }
+  },
+  "build-options": {
+    "env": {
+      "GST_PLUGIN_PATH": "/app/lib/gstreamer-1.0"
+    }
+  },
+  "modules": [
+    {
+      "name": "tello-deck",
+      "buildsystem": "simple",
+      "build-commands": [
+        "rm -f stddef.h",
+        "make",
+        "make install DESTDIR=/app",
+        "install -Dm644 data/com.github.antunnitraj.tello-deck.desktop /app/share/applications/com.github.antunnitraj.tello-deck.desktop",
+        "install -Dm644 data/com.github.antunnitraj.tello-deck.svg /app/share/icons/hicolor/scalable/apps/com.github.antunnitraj.tello-deck.svg",
+        "install -Dm644 data/com.github.antunnitraj.tello-deck.metainfo.xml /app/share/metainfo/com.github.antunnitraj.tello-deck.metainfo.xml"
+      ],
+      "sources": [
+        {
+          "type": "dir",
+          "path": "."
+        }
+      ]
+    }
+  ]
+}

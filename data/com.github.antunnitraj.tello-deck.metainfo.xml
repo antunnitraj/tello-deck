@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.github.antunnitraj.tello-deck</id>
+  <name>Tello Deck</name>
+  <summary>Control your DJI Tello drone with a Steam Deck</summary>
+  <description>
+    <p>
+      Tello Deck transforms your Steam Deck into a DJI Tello drone controller.
+      It provides real-time video streaming from the drone, gamepad-based flight
+      control, speed mode toggling, camera control, and live flight metrics such
+      as battery level, WiFi signal strength, and altitude.
+    </p>
+  </description>
+  <url type="homepage">https://github.com/antunnitraj/tello-deck</url>
+  <launchable type="desktop-id">com.github.antunnitraj.tello-deck.desktop</launchable>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <releases>
+    <release version="1.0.0" date="2024-01-01"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

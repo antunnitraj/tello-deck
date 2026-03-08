@@ -36,6 +36,31 @@ make uninstall
 ### Running in Gaming Mode
 To run in Gaming Mode, navigate to /usr/local/bin/ (or installation directory) in Dolphin, right-click the tello executable, and select "Add to Steam".
 
+## Flatpak
+
+A Flatpak manifest (`com.github.antunnitraj.tello-deck.json`) is provided to build and distribute Tello Deck as a Flatpak application.
+
+### Permissions
+
+The Flatpak bundle requests the following permissions:
+
+| Permission | Reason |
+|---|---|
+| `--share=network` | Communicate with the Tello drone over UDP/WiFi |
+| `--share=ipc` | Required for X11 shared memory (IPC) |
+| `--socket=fallback-x11` | X11 display output |
+| `--socket=wayland` | Wayland display output |
+| `--device=all` | Access gamepad/controller input devices (`/dev/input/*`). Flatpak does not provide a more granular permission for input devices. |
+
+### Building the Flatpak locally
+
+```bash
+flatpak-builder --user --install --force-clean build-dir com.github.antunnitraj.tello-deck.json
+flatpak run com.github.antunnitraj.tello-deck
+```
+
+> **Note:** The repository contains a `stddef.h` shim at the root to work around a kernel header conflict on SteamOS. This file is removed automatically during the Flatpak build (and the CI build) so that the system-provided `stddef.h` is used instead.
+
 ## Building on SteamDeck
 ### Disable read-only mode
 By default SteamDeck's root file system is read-only so after you create root credentials you have to disable it:
