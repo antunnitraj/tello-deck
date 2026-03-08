@@ -417,7 +417,7 @@ int TelloApp::run(int argc, char *argv[])
     instance = this;
     tello.camera_callback = NULL;
     tello.data_callback = NULL;
-    GtkApplication *app = gtk_application_new("com.tello.GtkApplication", G_APPLICATION_DEFAULT_FLAGS);
+    GtkApplication *app = gtk_application_new("com.github.antunnitraj.tello-deck", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(app, "activate", G_CALLBACK(TelloApp::on_activate_static), this);
     int status = g_application_run(G_APPLICATION(app), argc, argv);
     g_object_unref(app);
